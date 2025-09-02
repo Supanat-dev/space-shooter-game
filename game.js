@@ -88,4 +88,50 @@ function gameLoop() {
     requestAnimationFrame(gameLoop);
 }
 
+
 gameLoop();
+
+
+// เพิ่มตัวแปรสำหรับควบคุมการสัมผัส
+let isTouchingLeft = false;
+let isTouchingRight = false;
+
+// เพิ่ม Event Listener สำหรับการสัมผัส
+document.addEventListener('touchstart', (e) => {
+    const touchX = e.touches[0].clientX;
+    const canvasRect = canvas.getBoundingClientRect();
+    const touchRelativeToCanvas = touchX - canvasRect.left;
+
+    if (touchRelativeToCanvas < canvas.width / 2) {
+        isTouchingLeft = true;
+    } else {
+        isTouchingRight = true;
+    }
+});
+
+document.addEventListener('touchend', (e) => {
+    isTouchingLeft = false;
+    isTouchingRight = false;
+});
+
+// แก้ไขฟังก์ชัน update()
+function update() {
+    // โค้ดสำหรับแป้นพิมพ์เหมือนเดิม
+    if (keys['ArrowLeft'] && player.x > 0) {
+        player.x -= player.speed;
+    }
+    if (keys['ArrowRight'] && player.x < canvas.width - player.width) {
+        player.x += player.speed;
+    }
+
+    // เพิ่มโค้ดสำหรับควบคุมด้วยการสัมผัส
+    if (isTouchingLeft && player.x > 0) {
+        player.x -= player.speed;
+    }
+    if (isTouchingRight && player.x < canvas.width - player.width) {
+        player.x += player.speed;
+    }
+
+    // โค้ดส่วนที่เหลือของฟังก์ชัน update() เหมือนเดิม
+    // ...
+}
