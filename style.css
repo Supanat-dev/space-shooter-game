@@ -24,3 +24,28 @@ canvas {
     font-size: 1.5em;
     margin-top: 10px;
 }
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+    width: 200px;
+    margin-top: 20px;
+}
+
+#leftButton, #rightButton {
+    padding: 15px 25px;
+    font-size: 2em;
+    cursor: pointer;
+    background-color: #333;
+    color: #fff;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    user-select: none;
+    -webkit-user-select: none; /* สำหรับ Safari */
+    -moz-user-select: none;    /* สำหรับ Firefox */
+    -ms-user-select: none;     /* สำหรับ IE10+ */
+}
+
+#leftButton:active, #rightButton:active {
+    background-color: #555;
+}
