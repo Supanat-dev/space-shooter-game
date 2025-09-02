@@ -91,7 +91,6 @@ function gameLoop() {
 
 gameLoop();
 
-
 // เพิ่มตัวแปรสำหรับควบคุมการสัมผัส
 let isTouchingLeft = false;
 let isTouchingRight = false;
@@ -135,3 +134,4 @@ function update() {
     // โค้ดส่วนที่เหลือของฟังก์ชัน update() เหมือนเดิม
     // ...
 }
+
